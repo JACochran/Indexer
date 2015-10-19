@@ -1,5 +1,6 @@
 package search;
 
-public class VectorIndexerTest {
+public class VectorIndexerTest 
+{
 
 }
