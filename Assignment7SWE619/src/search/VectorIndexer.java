@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * 
  * @author Jenifer Cochran 
- * @author Erich O
+ * @author Erich O'Saben
  *
  * @param <T>
  */
