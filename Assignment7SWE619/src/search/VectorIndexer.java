@@ -2,6 +2,7 @@ package search;
 
 import java.util.List;
 import java.util.Vector;
+
 /**
  * 
  * @author Jenifer Cochran 
@@ -52,4 +53,5 @@ public class VectorIndexer<T> implements Indexer<T>
     {
         return vector.size();
     }
+
 }

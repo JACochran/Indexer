@@ -2,7 +2,7 @@ package search;
 /**
  * 
  * @author Jenifer Cochran 
- * @author Erich O
+ * @author Erich O'Saben
  *
  * @param <E>
  */

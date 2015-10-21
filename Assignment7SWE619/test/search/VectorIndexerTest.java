@@ -1,17 +1,14 @@
 package search;
 
-<<<<<<< Updated upstream
-public class VectorIndexerTest 
-{
-=======
-import static org.junit.Assert.fail;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class VectorIndexerTest {
 	VectorIndexer<String> v1;
@@ -37,7 +34,5 @@ public class VectorIndexerTest {
 		v1.indexOf(null);
 		
 	}
-
->>>>>>> Stashed changes
 
 }

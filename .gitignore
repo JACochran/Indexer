@@ -1,7 +1,11 @@
-.classpath
-.project
 .DS*
 .metadata/*
 .settings/*
 .recommenders/*
 
+
+Assignment7SWE619/.classpath
+Assignment7SWE619/.project
+
+
+*.class
