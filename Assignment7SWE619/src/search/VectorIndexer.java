@@ -40,11 +40,6 @@ public class VectorIndexer<T> implements Indexer<T>
     @Override
     public int indexOf(T element)
     {
-        if(element == null)
-        {
-            throw new NullPointerException("Element cannot be null.");
-        }
-        
         return vector.indexOf(element);
     }
 

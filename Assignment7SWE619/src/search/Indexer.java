@@ -13,7 +13,6 @@ public interface Indexer<E>
 	 * specified element in the collection or -1 if this collection
 	 * does not contain the element. 
 	 *  
-	 * @throws NullPointerException if the specified element is null
 	 * @param element element to find the index of in relation to the entire collection
 	 * @return returns the index of the first occurrence of the
 	 * specified element in the collection or -1 if this collection

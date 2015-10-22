@@ -14,14 +14,13 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SearchUtilityTest {
+public class SearchUtilityTest 
+{
 	VectorIndexer<String> v1;
-	
-
 	
 	@Before
 	public void setUp() throws Exception {
-		List<String> l = new ArrayList();
+		List<String> l = new ArrayList<String>();
 		l.add("a");
 		l.add("b");
 		l.add("c");
@@ -40,17 +39,24 @@ public class SearchUtilityTest {
 		
 	}
 	
-	@Test(expected=NullPointerException.class)
+	@Test(expected = NullPointerException.class)
 	public void testColletionNPE() {
 		SearchUtility.search(null,"a");
 	}
 	
 
-	@Test(expected=NullPointerException.class)
-	public void testElementNPE() {
+	@Test
+	public void testElementNullNotExists() {
 		
 		//the element being searched for is null
-		SearchUtility.search(v1,null);
+		assertEquals(-1, SearchUtility.search(v1,null));
+	}
+	
+	@Test
+	public void testElementNulleExists()
+	{
+		VectorIndexer<String> vectorWithNull = new VectorIndexer<String>("a", "b", null, "c");
+		assertEquals(2, SearchUtility.search(vectorWithNull, null));
 	}
 
 }

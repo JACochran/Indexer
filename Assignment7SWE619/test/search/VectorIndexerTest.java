@@ -43,9 +43,6 @@ public class VectorIndexerTest {
 		assertEquals(v1.indexOf("c"),v3.indexOf("c"));
 		
 		assertEquals(v1.size(),v3.size());
-		
-		
-		
 	}
 	
 	
@@ -67,10 +64,10 @@ public class VectorIndexerTest {
 		assertEquals(4, v2.size());
 	}
 
-	@Test(expected=NullPointerException.class)
-	public void testIndexOfNPE() {
-		v1.indexOf(null);
-		
+	@Test
+	public void testIndexOfNull() 
+	{
+		assertEquals(-1, v1.indexOf(null));
 	}
 
 }
