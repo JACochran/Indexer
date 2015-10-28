@@ -114,4 +114,23 @@ public class BoundedQueue<E>
 			put(value);
 		}
 	}
+	
+	@Override
+	public String toString(){
+		
+		
+		if(rep.size() == 0) return "BoundedQueue:{}";
+		  
+		  String s = "BoundedQueue: {" + get().toString();
+		  
+		  while(!isEmpty())
+		  {
+			 s = s + ", "+ get().toString(); 
+		  }
+		  
+		  return s + "}"; 
+		  
+	}
+	
+	
 }
