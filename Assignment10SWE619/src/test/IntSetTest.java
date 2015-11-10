@@ -13,26 +13,18 @@ public class IntSetTest {
 	IntSet b;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception 
+	{
 		a = new IntSet();
 		b = new IntSet();
-		
 	}
 
-	
 	@Test
-	public void testIntSet() {
-		
+	public void testIntSet() throws CloneNotSupportedException
+	{
 		IntSet c = null;
 		
-		try {
-			
-			c = a.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		c = a.clone();
 		
 		//tests equals and clone
 		//reflexive
@@ -47,11 +39,8 @@ public class IntSetTest {
 		assertTrue(b.equals(c));
 		assertTrue(a.equals(c)); //**shows that clone also works
 		
-		
 		//tests hashcode
 		assertTrue(a.hashCode() == b.hashCode());
-		
-	
 	}
 
 }
