@@ -25,6 +25,12 @@ public class IntSetTest {
 		IntSet c = null;
 		
 		c = a.clone();
+		//object cloned equals original
+		assertTrue(c.equals(a));
+		//cloned object and original object are not the exact same
+		assertTrue(c != a);
+		//they are the same type of object
+		assertTrue(c.getClass() == a.getClass());
 		
 		//tests equals and clone
 		//reflexive
