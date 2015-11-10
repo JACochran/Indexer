@@ -13,7 +13,6 @@ final public class IntSet implements Cloneable
 
       IntSet s = (IntSet) obj;
       
-      //I changed this line. removed 'super.equals(obj) &&' b/c it made tests fail
       return this.els.containsAll(s.els) && s.els.containsAll(this.els);
    }
 
