@@ -25,10 +25,17 @@ public class BadIntSetSubClassTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws CloneNotSupportedException {
 		
-		//
-		assertTrue(parent.equals(parent));
+		BadIntSet c = new BadIntSetSubClass("c");
+		BadIntSet d = c.clone();
+		
+		//cloned object and original object are not the exact same
+		assertTrue(c != d);
+		//Breaks the clone contract, they are not the same type of object
+		assertFalse(c.getClass() == d.getClass());
+		//Breaks the clone contract, the cloned object is not equal to the original
+		assertFalse(c.equals(d));
 		
 		
 	}
