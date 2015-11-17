@@ -1,21 +1,42 @@
 package instrumentedMap;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class ForwardingMap<K,V> implements Map<K,V> {
-    private final Map<K,V> s;
-    public ForwardingMap(Map<K,V> s) { this.s = s; }
+public class ForwardingMap<K, V> implements Map<K, V> {
+	private final Map<K, V> s;
 
-    public void clear()               { s.clear();            }
-    public boolean isEmpty()          { return s.isEmpty();   }
-    public int size()                 { return s.size();      }
-    @Override public boolean equals(Object o)
-                                       { return s.equals(o);  }
-    @Override public int hashCode()    { return s.hashCode(); }
-    @Override public String toString() { return s.toString(); }
+	public ForwardingMap(Map<K, V> s) {
+		this.s = s;
+	}
+
+	public void clear() {
+		s.clear();
+	}
+
+	public boolean isEmpty() {
+		return s.isEmpty();
+	}
+
+	public int size() {
+		return s.size();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		return s.equals(o);
+	}
+
+	@Override
+	public int hashCode() {
+		return s.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return s.toString();
+	}
 
 	@Override
 	public boolean containsKey(Object key) {
@@ -59,7 +80,6 @@ public class ForwardingMap<K,V> implements Map<K,V> {
 
 	@Override
 	public Collection<V> values() {
-		// TODO Auto-generated method stub
-		return null;
+		return s.values();
 	}
 }
