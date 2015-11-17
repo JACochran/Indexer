@@ -38,47 +38,38 @@ public class ForwardingMap<K, V> implements Map<K, V> {
 		return s.toString();
 	}
 
-	@Override
 	public boolean containsKey(Object key) {
 		return s.containsKey(key);
 	}
 
-	@Override
 	public boolean containsValue(Object value) {
 		return s.containsValue(value);
 	}
 
-	@Override
 	public Set<java.util.Map.Entry<K, V>> entrySet() {
 		return s.entrySet();
 	}
 
-	@Override
 	public V get(Object key) {
 		return s.get(key);
 	}
 
-	@Override
 	public Set<K> keySet() {
 		return s.keySet();
 	}
 
-	@Override
 	public V put(K key, V value) {
 		return s.put(key, value);
 	}
 
-	@Override
 	public void putAll(Map<? extends K, ? extends V> m) {
 		s.putAll(m);
 	}
 
-	@Override
 	public V remove(Object key) {
 		return s.remove(key);
 	}
 
-	@Override
 	public Collection<V> values() {
 		return s.values();
 	}
