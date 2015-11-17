@@ -1,13 +1,13 @@
-package intstrumentedSet;
+package intstrumentedCollection;
 
 import java.util.Collection;
 import java.util.Set;
 
-public class InstrumentedSet<E> extends ForwardingSet<E> {
+public class InstrumentedCollection<E> extends ForwardingCollection<E> {
     private int addCount = 0;
 
-    public InstrumentedSet(Collection<E> s) {
-        super((Set<E>) s);
+    public InstrumentedCollection(Collection<E> s) {
+        super(s);
     }
 
     @Override public boolean add(E e) {

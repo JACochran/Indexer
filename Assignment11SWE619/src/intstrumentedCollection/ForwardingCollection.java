@@ -1,13 +1,13 @@
-package intstrumentedSet;
+package intstrumentedCollection;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
 
-public class ForwardingSet<E> implements Set<E> {
-    private final Set<E> s;
-    public ForwardingSet(Set<E> s) { this.s = s; }
+public class ForwardingCollection<E> implements Collection<E> {
+    private final Collection<E> s;
+    public ForwardingCollection(Collection<E> s) { this.s = s; }
 
     public void clear()               { s.clear();            }
     public boolean contains(Object o) { return s.contains(o); }
