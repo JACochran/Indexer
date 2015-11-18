@@ -34,6 +34,7 @@ public class InstrumentedCollectionTest
 		//x.equals(y)
 		assertTrue(instrList.equals(listValues));
 		//y.equals(x)
+		//Fails because the collections can contain Sets or Lists and doesn't know the correct implementation of equals() to use (Sets or Lists)
 		assertTrue("Equals does not meet the Symmetric part of the contract.", listValues.equals(instrList));
 	}
 	
@@ -46,6 +47,7 @@ public class InstrumentedCollectionTest
 		//x.equals(y)
 		assertTrue(instraSet.equals(setValues));
 		//y.equals(x)
+		//Fails because the collections can contain Sets or Lists and doesn't know the correct implementation of equals() to use (Sets or Lists)
 		assertTrue("Equals does not meet the Symmetric part of the contract.", setValues.equals(instraSet));
 	}
 	
