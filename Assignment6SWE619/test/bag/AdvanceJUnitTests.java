@@ -21,7 +21,32 @@ public class AdvanceJUnitTests
 		Assert.assertTrue(b.equals(a));
 	}
 	
+	@Theory
+	public void isEqualsReflexive(Object a)
+	{
+		Assume.assumeTrue(a != null);
+		Assert.assertTrue(a.equals(a));
+	}
 	
+	@Theory
+	public void isEqualsTransitive(Object x, Object y, Object z)
+	{
+		Assume.assumeTrue(x != null && x.equals(y) && y.equals(z));
+		Assert.assertTrue(x.equals(z));
+	}
 	
+	@Theory
+	public void hashCode(Object a, Object b)
+	{
+		Assume.assumeTrue(a != null && a.equals(b));
+		Assert.assertTrue(a.hashCode() == b.hashCode());
+	}
+	
+	@Theory
+	public void equalsNullAlwaysFalse(Object a)
+	{
+		Assume.assumeTrue(a != null);
+		Assert.assertFalse(a.equals(null));
+	}
 
 }
