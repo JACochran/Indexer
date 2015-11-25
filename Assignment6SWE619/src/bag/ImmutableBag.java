@@ -76,4 +76,33 @@ public class ImmutableBag extends AbstractIBag
         
         return string.toString();
     }
+    
+    @Override
+    public int hashCode()
+    {
+    	int sum = 0;
+    	for(Object element : this.elements)
+    	{
+    		sum += element.hashCode();
+    	}
+    	
+    	return sum;
+    }
+    
+    @Override
+    public boolean equals(Object object)
+    {
+    	if(object == null)
+    	{
+    		return false;
+    	}
+    	
+    	if(object.getClass() == this.getClass())
+    	{
+    		ImmutableBag bag = (ImmutableBag)object;
+    		return bag.elements.containsAll(this.elements) && this.elements.containsAll(bag.elements);
+    	}
+    	
+    	return false;
+    }
 }
