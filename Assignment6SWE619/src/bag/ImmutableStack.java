@@ -1,5 +1,6 @@
 package bag;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * 
@@ -71,4 +72,20 @@ public class ImmutableStack extends AbstractIBag
         
         return string.toString();
     }
+    
+    public int hashCode()
+    {
+    	return this.elements.hashCode();
+    }
+    
+    
+    public boolean equals(Object o)
+	{ 
+    	if ((o == null) || (!(o.getClass() == this.getClass())))
+    		return false;
+    	
+    	  ImmutableStack s = (ImmutableStack) o;
+    	
+    	return this.elements.equals(s.elements);  	
+    } 
 }

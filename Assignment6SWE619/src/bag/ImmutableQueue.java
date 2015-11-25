@@ -1,12 +1,15 @@
 package bag;
 
 import java.util.List;
+
+import bag.AbstractIBag;
+import bag.ArrayCopyUtility;
 /**
  * 
  * @author Jenifer Cochran
  *
  */
-public class ImmutableQueue extends AbstractIBag
+public class ImmutableQueue extends AbstractIBag 
 {
     public ImmutableQueue()
     {
@@ -73,4 +76,21 @@ public class ImmutableQueue extends AbstractIBag
         
         return string.toString();
     }
+    
+    public int hashCode()
+    {
+    	return this.elements.hashCode();
+    }
+    
+    
+    public boolean equals(Object o)
+	{ 
+    	if ((o == null) || (!(o.getClass() == this.getClass())))
+    		return false;
+    	
+    	  ImmutableQueue s = (ImmutableQueue) o;
+    	
+    	return this.elements.equals(s.elements);  	
+    }
+    
 }
