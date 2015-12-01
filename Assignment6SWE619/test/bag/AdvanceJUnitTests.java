@@ -51,13 +51,6 @@ public class AdvanceJUnitTests
 	static List<Integer> fourNumbers = new ArrayList<Integer>(Arrays.asList(2,3,4,5));
 	static List<Integer> threeNumbers = new ArrayList<Integer>(Arrays.asList(3,4,5));
 	
-	public static List<ImmutableBag> bagList;// = new ImmutableBag();
-	public static ImmutableBag bagOne = fillBagPublic(fiveNumbers);
-	public static ImmutableBag bagTwo = fillBagPublic(fourNumbers);
-	public static ImmutableBag bagThree = fillBagPublic(threeNumbers);
-	public static ImmutableBag bagFour = fillBagPublic(threeNumbers);
-	public static ImmutableBag bagFive = fillBagPublic(threeNumbers); 
-	
 	@DataPoints
 	public static AbstractIBag[] bags = new AbstractIBag[]{fillBagPublic(fiveNumbers), 
 			                                               fillBagPublic(fourNumbers), 
