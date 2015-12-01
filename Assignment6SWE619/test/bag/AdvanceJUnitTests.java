@@ -59,7 +59,23 @@ public class AdvanceJUnitTests
 	public static ImmutableBag bagFive = fillBagPublic(threeNumbers); 
 	
 	@DataPoints
-	public static ImmutableBag[] bags = new ImmutableBag[]{bagOne, bagTwo, bagThree, bagFour, bagFive, null};
+	public static AbstractIBag[] bags = new AbstractIBag[]{fillBagPublic(fiveNumbers), 
+			                                               fillBagPublic(fourNumbers), 
+			                                               fillBagPublic(threeNumbers), 
+			                                               fillBagPublic(threeNumbers), 
+			                                               fillBagPublic(threeNumbers),
+			                                               null, 
+			                                               fillQueuePublic(fiveNumbers),
+			                                               fillQueuePublic(fourNumbers),
+			                                               fillQueuePublic(threeNumbers),
+			                                               fillQueuePublic(threeNumbers),
+			                                               fillQueuePublic(threeNumbers),
+			                                               fillStackPublic(fiveNumbers),
+			                                               fillStackPublic(fourNumbers),
+			                                               fillStackPublic(threeNumbers),
+			                                               fillStackPublic(threeNumbers),
+			                                               fillStackPublic(threeNumbers)
+			                                               };
 	
 	
 	
