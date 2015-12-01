@@ -10,13 +10,14 @@ import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
 import org.junit.experimental.theories.DataPoint;
+import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 
 @RunWith(Theories.class)
 public class AdvanceJUnitTests 
 {
-	public <T> ImmutableBag fillBagPublic(List<T> elements)
+	public  static <T> ImmutableBag fillBagPublic(List<T> elements)
     {
         ImmutableBag bag = new ImmutableBag();
         for(T element: elements)
@@ -26,7 +27,7 @@ public class AdvanceJUnitTests
         return bag;
     }
 	
-	public <T> ImmutableStack fillStackPublic(List<T> elements)
+	public static <T> ImmutableStack fillStackPublic(List<T> elements)
     {
         ImmutableStack bag = new ImmutableStack();
         for( T element: elements)
@@ -36,7 +37,7 @@ public class AdvanceJUnitTests
         return bag;
     }
 	
-	public <T> ImmutableQueue fillQueuePublic(List<T> elements)
+	public static <T> ImmutableQueue fillQueuePublic(List<T> elements)
     {
         ImmutableQueue bag = new ImmutableQueue();
         for( T element: elements)
@@ -46,50 +47,20 @@ public class AdvanceJUnitTests
         return bag;
     }
 	
+	static List<Integer> fiveNumbers = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5));
+	static List<Integer> fourNumbers = new ArrayList<Integer>(Arrays.asList(2,3,4,5));
+	static List<Integer> threeNumbers = new ArrayList<Integer>(Arrays.asList(3,4,5));
 	
-	
-	@DataPoint
 	public static List<ImmutableBag> bagList;// = new ImmutableBag();
-	@DataPoint
-	public static ImmutableBag bagOne;
-	@DataPoint
-	public static ImmutableBag bagTwo;
-	@DataPoint
-	public static ImmutableBag bagThree;
-	@DataPoint
-	public static ImmutableBag bagFour;
-	@DataPoint
-	public static ImmutableBag bagFive; 
+	public static ImmutableBag bagOne = fillBagPublic(fiveNumbers);
+	public static ImmutableBag bagTwo = fillBagPublic(fourNumbers);
+	public static ImmutableBag bagThree = fillBagPublic(threeNumbers);
+	public static ImmutableBag bagFour = fillBagPublic(threeNumbers);
+	public static ImmutableBag bagFive = fillBagPublic(threeNumbers); 
 	
-	@Before
-	public void setUp() throws Exception 
-	{
-		List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5));
-		
-		
-		 bagOne = new ImmutableBag();
-		 bagTwo = new ImmutableBag();
-		 bagThree = new ImmutableBag();
-		 bagFour = new ImmutableBag();
-		 bagFive = new ImmutableBag();
-		
-		//b1 == b2, b4 == b5
-		bagOne = fillBagPublic(numbers);
-		
-		bagTwo = fillBagPublic(numbers);
-		numbers.remove(0);
-		
-		bagThree = fillBagPublic(numbers);
-		numbers.remove(0);
-		
-		bagFour = fillBagPublic(numbers);
-		bagFive = fillBagPublic(numbers);
-		
-		bagList = new ArrayList<ImmutableBag>(Arrays.asList(bagOne,bagTwo,bagThree, bagFour, bagFive));
-		
-		//System.out.println(bagOne.hashCode() + " " + bagThree.hashCode());
-		//System.out.println(bagOne.equals(bagThree));
-	}
+	@DataPoints
+	public static ImmutableBag[] bags = new ImmutableBag[]{bagOne, bagTwo, bagThree, bagFour, bagFive, null};
+	
 	
 	
 	@Theory
