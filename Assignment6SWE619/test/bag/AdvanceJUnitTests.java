@@ -116,5 +116,33 @@ public class AdvanceJUnitTests
 		Assume.assumeTrue(a != null);
 		Assert.assertFalse(a.equals(null));
 	}
-
+	
+	@Theory
+	public void toStringTest(Object a, Object b)
+	{
+		Assume.assumeTrue(a != null && a.equals(b));
+		Assert.assertEquals(a.toString(), b.toString());
+	}
+	
+	@Theory
+	public void getTest(Object a, Object b)
+	{
+		Assume.assumeTrue(a != null && a.equals(b));
+		Assert.assertEquals(((AbstractIBag) a).get(),  ((AbstractIBag) b).get());
+	}
+	
+	@Theory
+	public void chooseTest(Object a, Object b)
+	{
+		Assume.assumeTrue(a != null && a.equals(b));
+		Assert.assertEquals(((AbstractIBag) a).choose(),  ((AbstractIBag) b).choose());
+	}
+	
+	/*
+	@Theory
+	public void ISETest(Object a)
+	{
+				
+	}
+	*/
 }
