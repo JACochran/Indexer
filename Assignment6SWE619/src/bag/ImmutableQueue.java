@@ -93,4 +93,10 @@ public class ImmutableQueue extends AbstractIBag
     	return this.elements.equals(s.elements);  	
     }
     
+    @Override
+	public int size() 
+	{	
+		return this.elements.size();
+	}
+    
 }

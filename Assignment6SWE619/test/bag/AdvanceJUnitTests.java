@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
+
 
 @RunWith(Theories.class)
 public class AdvanceJUnitTests 
@@ -49,7 +52,8 @@ public class AdvanceJUnitTests
 	
 	static List<Integer> fiveNumbers = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5));
 	static List<Integer> fourNumbers = new ArrayList<Integer>(Arrays.asList(2,3,4,5));
-	static List<Integer> threeNumbers = new ArrayList<Integer>(Arrays.asList(3,4,5));
+	static List<Integer> threeNumbers = new ArrayList<Integer>(Arrays.asList(3,4,5, null));
+	
 	
 	@DataPoints
 	public static AbstractIBag[] bags = new AbstractIBag[]{fillBagPublic(fiveNumbers), 
@@ -67,10 +71,15 @@ public class AdvanceJUnitTests
 			                                               fillStackPublic(fourNumbers),
 			                                               fillStackPublic(threeNumbers),
 			                                               fillStackPublic(threeNumbers),
-			                                               fillStackPublic(threeNumbers)
-			                                               };
+			                                               fillStackPublic(threeNumbers),
+			                                               new ImmutableBag(),
+			                                               new ImmutableQueue(),
+			                                               new ImmutableStack()	
+															};
 	
-	
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+
 	
 	@Theory
 	public void isEqualsSymmetric(Object a, Object b)
@@ -118,24 +127,36 @@ public class AdvanceJUnitTests
 	}
 	
 	@Theory
-	public void getTest(Object a, Object b)
+	public void getTest(AbstractIBag a, AbstractIBag b)
 	{
-		Assume.assumeTrue(a != null && a.equals(b));
-		Assert.assertEquals(((AbstractIBag) a).get(),  ((AbstractIBag) b).get());
+		Assume.assumeTrue(a != null && a.size() != 0 && a.equals(b));
+		Assert.assertEquals(a.get(),  b.get());
 	}
 	
 	@Theory
-	public void chooseTest(Object a, Object b)
+	public void chooseTest(AbstractIBag a, AbstractIBag b)
 	{
-		Assume.assumeTrue(a != null && a.equals(b));
-		Assert.assertEquals(((AbstractIBag) a).choose(),  ((AbstractIBag) b).choose());
+		Assume.assumeTrue(a != null && a.size() != 0 && a.equals(b));
+		Assert.assertEquals(a.choose(),  b.choose());
 	}
 	
-	/*
+	
 	@Theory
-	public void ISETest(Object a)
-	{
-				
+	public void throwExceptionIfArgumentIsIllegalGet(AbstractIBag a) throws Exception {
+	    
+		Assume.assumeTrue(a.size() == 0);
+	    thrown.expect(IllegalStateException.class);
+	    a.get();
+	    
 	}
-	*/
+	
+	@Theory
+	public void throwExceptionIfArgumentIsIllegalChoose(AbstractIBag a) throws Exception {
+	    
+		Assume.assumeTrue(a.size() == 0);
+	    thrown.expect(IllegalStateException.class);
+	    a.choose();
+	    
+	}
+	
 }

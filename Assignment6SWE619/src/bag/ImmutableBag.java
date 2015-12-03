@@ -89,7 +89,10 @@ public class ImmutableBag extends AbstractIBag
     	int sum = 0;
     	for(Object element : this.elements)
     	{
-    		sum += element.hashCode();
+    		if (element != null)
+    		{
+    			sum += element.hashCode();
+    		}
     	}
     	
     	return sum;
@@ -111,4 +114,10 @@ public class ImmutableBag extends AbstractIBag
     	
     	return false;
     }
+
+	@Override
+	public int size() 
+	{	
+		return this.elements.size();
+	}
 }

@@ -20,6 +20,7 @@ public abstract class AbstractIBag
          return newBag;
       }
 
+      public abstract int size();
       // Effects:  if this is empty throw ISE
       //           else return an arbitrary element of this
       public abstract Object choose() throws IllegalStateException;
