@@ -1,6 +1,5 @@
 package bag;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +8,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
 import org.junit.Assume;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
@@ -106,9 +103,7 @@ public class AdvanceJUnitTests
 	@Theory
 	public void hashCode(Object a, Object b)
 	{
-		//System.out.println(a.toString() + "\n" + b.toString() );
 		Assume.assumeTrue(a != null && a.equals(b));
-		
 		Assert.assertTrue(a.hashCode() == b.hashCode());
 	}
 	
@@ -142,21 +137,18 @@ public class AdvanceJUnitTests
 	
 	
 	@Theory
-	public void throwExceptionIfArgumentIsIllegalGet(AbstractIBag a) throws Exception {
-	    
-		Assume.assumeTrue(a.size() == 0);
+	public void throwExceptionIfArgumentIsIllegalGet(AbstractIBag a) throws Exception 
+	{
+		Assume.assumeTrue(a != null && a.size() == 0);
 	    thrown.expect(IllegalStateException.class);
 	    a.get();
-	    
 	}
 	
 	@Theory
-	public void throwExceptionIfArgumentIsIllegalChoose(AbstractIBag a) throws Exception {
-	    
-		Assume.assumeTrue(a.size() == 0);
+	public void throwExceptionIfArgumentIsIllegalChoose(AbstractIBag a) throws Exception
+	{
+		Assume.assumeTrue(a != null && a.size() == 0);
 	    thrown.expect(IllegalStateException.class);
 	    a.choose();
-	    
 	}
-	
 }
