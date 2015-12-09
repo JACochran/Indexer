@@ -48,6 +48,7 @@ public class EasyMockPortfolioTest {
 
 	      double marketValue = portfolio.getMarketValue();		
 	      assertTrue( marketValue == 100500.0);
+	       
 	}
 
 }

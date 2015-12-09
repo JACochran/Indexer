@@ -31,4 +31,10 @@ public class Stock {
 		return name;
 	}
 	
+	public void addQuantity(int quantity){
+		if (quantity < 0 )
+			throw new IllegalArgumentException("Quantity must be greater than zero.");
+		
+		this.quantity += quantity;
+	}
 }
