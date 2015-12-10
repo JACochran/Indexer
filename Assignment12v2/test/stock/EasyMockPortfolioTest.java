@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class EasyMockPortfolioTest {
+	private static final double EPSILON = 0.001;
 	Portfolio portfolio;
 	StockService stockService;
 
@@ -88,15 +89,44 @@ public class EasyMockPortfolioTest {
 		portfolio.setStocks(stocks);
 
 		// set up return values
+		EasyMock.expect(stockService.getClosingPrice(googleStock)).andReturn(22.0).times(1);
 		EasyMock.expect(stockService.getOpenPrice(googleStock)).andReturn(35.00).times(1);
+		EasyMock.expect(stockService.getClosingPrice(microsoftStock)).andReturn(70.0).times(1);
 		EasyMock.expect(stockService.getOpenPrice(microsoftStock)).andReturn(57.0).times(1);
 
-		EasyMock.expect(stockService.getClosingPrice(googleStock)).andReturn(22.0).times(1);
-		EasyMock.expect(stockService.getClosingPrice(microsoftStock)).andReturn(70.0).times(1);
+		// activate!
+		EasyMock.replay(stockService);
+
+		assertTrue(1170.0 == portfolio.todaysStockEarnings());
+
+		EasyMock.verify(stockService);
+	}
+
+	@Test
+	public void yearlyHigh() {
+		// Creates a list of stocks to be added to the portfolio
+		List<Stock> stocks = new ArrayList<Stock>();
+		Stock googleStock = new Stock("1", "Google", 10);
+		Stock microsoftStock = new Stock("2", "Microsoft", 100);
+
+		stocks.add(googleStock);
+		stocks.add(microsoftStock);
+
+		portfolio.setStocks(stocks);
+
+		// set up return values
+		EasyMock.expect(stockService.getPrice(googleStock)).andReturn(82.0).times(1);
+		EasyMock.expect(stockService.getYearlyHigh(googleStock)).andReturn(75.00).times(1);
+		EasyMock.expect(stockService.getPrice(microsoftStock)).andReturn(70.0).times(1);
+		EasyMock.expect(stockService.getYearlyHigh(microsoftStock)).andReturn(157.0).times(1);
+
 		// activate!
 		EasyMock.replay(stockService);
 		
-		assertTrue(1170.0 == portfolio.todaysStockEarnings());
+		double microsoftYearlyHighPercent = portfolio.percentageOffYearlyHigh(microsoftStock);
+		double googleYearlyHighPercent = portfolio.percentageOffYearlyHigh(googleStock);
+		//see if it returns the expected value within three decimal places 
+		assertTrue(microsoftYearlyHighPercent - 0.554 <= EPSILON);
+		assertTrue(googleYearlyHighPercent - (-0.093) <= EPSILON);
 	}
-
 }

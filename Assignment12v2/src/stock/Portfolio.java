@@ -71,5 +71,10 @@ public class Portfolio {
 		
 		return earnings;
 	}
+	
+	public double percentageOffYearlyHigh(Stock stock)
+	{
+		return (1 - this.stockService.getPrice(stock)/this.stockService.getYearlyHigh(stock));
+	}
 
 }
